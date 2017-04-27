@@ -4,7 +4,7 @@
  Plugin URI: 
  Description: Adds an availability Calendar to BP
  Author: GippslandWeb
- Version: 1.2
+ Version: 1.3
  Author URI: https://wordpress.org/
  GitHub Plugin URI: Gippsland-Web/gw-bp-calender
  */
@@ -65,7 +65,7 @@ function gw_main_cal_title() {
 add_shortcode("gw-calendar","gw_main_cal_get_content");
 
 function gw_main_cal_content() {
-	echo(gw_main_cal_get_content());
+	return gw_main_cal_get_content();
 }
 
 function gw_main_cal_get_content() {
@@ -78,14 +78,14 @@ function gw_main_cal_get_content() {
        $_SESSION['cal_id'] = bp_displayed_user_id();
        $_SESSION['cal_member_id'] = get_current_user_id();
 
-        $data = "<script src='/wp-content/plugins/gippsweb-calendar/dist/jquery.dop.BookingCalendar.min.js'></script> <script type='text/javascript'>
+        $data = "<script src='/wp-content/plugins/gw-bp-calender/dist/jquery.dop.BookingCalendar.min.js'></script> <script type='text/javascript'>
             jQuery.noConflict() (function($) {
             $(document).ready(function() {
             $('#backend').DOPBookingCalendar({
             'Type':'BackEnd',
-            'DataURL':'/wp-content/plugins/gippsweb-calendar/load.php',";
+            'DataURL':'/wp-content/plugins/gw-bp-calender/load.php',";
         if(bp_displayed_user_id() == get_current_user_id()) {
-            $data = $data."'SaveURL':'/wp-content/plugins/gippsweb-calendar/save.php'";
+            $data = $data."'SaveURL':'/wp-content/plugins/gw-bp-calender/save.php'";
         }
         $data = $data."});     });       });
             </script>
@@ -98,8 +98,8 @@ function gw_main_cal_get_content() {
 
 function register_calendar_style() {
       //if ( is_page( 'calendar' )  || is_page( 'Availability' )  ) {
-        wp_enqueue_style( 'calendar', plugins_url('/gippsweb-calendar/dist/jquery.dop.BookingCalendar.css', dirname(__FILE__)) );
-        wp_enqueue_script( 'calendar', plugins_url('/gippsweb-calendar/dist/jquery.dop.BookingCalendar.min.js', dirname(__FILE__)), array(), '1.0.0', true );
+        wp_enqueue_style( 'calendar', plugins_url('/gw-bp-calender/dist/jquery.dop.BookingCalendar.css', dirname(__FILE__)) );
+        wp_enqueue_script( 'calendar', plugins_url('/gw-bp-calender/dist/jquery.dop.BookingCalendar.min.js', dirname(__FILE__)), array(), '1.0.0', true );
      // }
 
 }
