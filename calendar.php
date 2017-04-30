@@ -4,7 +4,7 @@
  Plugin URI: 
  Description: Adds an availability Calendar to BP
  Author: GippslandWeb
- Version: 1.3
+ Version: 1.3.1
  Author URI: https://wordpress.org/
  GitHub Plugin URI: Gippsland-Web/gw-bp-calender
  */
@@ -65,7 +65,7 @@ function gw_main_cal_title() {
 add_shortcode("gw-calendar","gw_main_cal_get_content");
 
 function gw_main_cal_content() {
-	return gw_main_cal_get_content();
+	echo gw_main_cal_get_content();
 }
 
 function gw_main_cal_get_content() {
